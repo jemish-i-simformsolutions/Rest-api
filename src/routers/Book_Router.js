@@ -2,6 +2,7 @@ const express = require("express");
 const router = new express.Router();
 const Booklist = require("../models/Book");
 
+//add book
 router.post("/Books", async (req, res) => {
   try {
     const book = new Booklist(req.body);
@@ -11,6 +12,7 @@ router.post("/Books", async (req, res) => {
     res.status(400).send(e);
   }
 });
+//get books
 router.get("/Books", async (req, res) => {
   try {
     const readBook = await Booklist.find({});
@@ -20,6 +22,7 @@ router.get("/Books", async (req, res) => {
   }
 });
 
+//get partiular book
 router.get("/Books/:id", async (req, res) => {
   try {
     const getbookbyid = await Booklist.findById({ _id: req.params.id });
@@ -28,6 +31,8 @@ router.get("/Books/:id", async (req, res) => {
     res.status(400).send(e);
   }
 });
+
+//update book
 router.patch("/Books/:id", async (req, res) => {
   try {
     const _id = req.params.id;
@@ -39,7 +44,7 @@ router.patch("/Books/:id", async (req, res) => {
     res.status(404).send(e);
   }
 });
-
+//delete book
 router.delete("/Books/:id", async (req, res) => {
   try {
     const _id = req.params.id;

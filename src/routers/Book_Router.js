@@ -9,6 +9,7 @@ router.post("/Books", async (req, res) => {
     const bookadded = await book.save();
     res.status(201).send(bookadded);
   } catch (e) {
+    console.log(e);
     res.status(400).send(e);
   }
 });

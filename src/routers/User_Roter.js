@@ -16,6 +16,7 @@ Router.post("/registration", async (req, res) => {
     const signupstatus = await UserDetail.save();
     res.status(201).send(signupstatus);
   } catch (e) {
+    console.log(e);
     res.status(400).send(e);
   }
 });
